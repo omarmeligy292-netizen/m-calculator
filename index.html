@@ -46,10 +46,9 @@
         .btn-silver { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #0f172a; font-weight: bold; }
         .btn-dark { background: linear-gradient(180deg, #334155, #1e293b); color: #f8fafc; border: 1px solid #475569; }
         .btn-num { background: linear-gradient(180deg, #475569, #334155); color: #ffffff; font-weight: bold; }
-        .btn-ac { background: linear-gradient(180deg, #dc2626, #b91c1c); color: #ffffff; font-weight: bold; }
-        .btn-del { background: linear-gradient(180deg, #d97706, #b45309); color: #ffffff; font-weight: bold; }
-        .btn-op { background: linear-gradient(180deg, #1e293b, #0f172a); color: #f59e0b; font-weight: bold; }
-        .btn-equals { background: linear-gradient(180deg, #16a34a, #15803d); color: #ffffff; font-weight: bold; }
+        .btn-del-ac { background: linear-gradient(180deg, #22c55e, #15803d); color: #ffffff; font-weight: bold; }
+        .btn-op { background: linear-gradient(180deg, #334155, #1e293b); color: #f59e0b; font-weight: bold; }
+        .btn-equals { background: linear-gradient(180deg, #22c55e, #15803d); color: #ffffff; font-weight: bold; }
 
         .solar-panel {
             background: linear-gradient(90deg, #2b1203, #451a03, #2b1203);
@@ -131,13 +130,13 @@
             <button onclick="appendValue(')')" class="btn-casio btn-dark py-1.5 rounded">)</button>
         </div>
 
-        <!-- Main Keypad & Operations Grid (Accurate Casio Layout) -->
+        <!-- Main Keypad & Operations Grid (Exact Match to Casio Image) -->
         <div class="grid grid-cols-5 gap-1.5 mt-1">
             <button onclick="appendValue('7')" class="btn-casio btn-num py-2.5 rounded text-base">7</button>
             <button onclick="appendValue('8')" class="btn-casio btn-num py-2.5 rounded text-base">8</button>
             <button onclick="appendValue('9')" class="btn-casio btn-num py-2.5 rounded text-base">9</button>
-            <button onclick="deleteLast()" class="btn-casio btn-del py-2.5 rounded text-xs">DEL</button>
-            <button onclick="clearScreen()" class="btn-casio btn-ac py-2.5 rounded text-xs">AC</button>
+            <button onclick="deleteLast()" class="btn-casio btn-del-ac py-2.5 rounded text-xs">DEL</button>
+            <button onclick="clearScreen()" class="btn-casio btn-del-ac py-2.5 rounded text-xs">AC</button>
 
             <button onclick="appendValue('4')" class="btn-casio btn-num py-2.5 rounded text-base">4</button>
             <button onclick="appendValue('5')" class="btn-casio btn-num py-2.5 rounded text-base">5</button>
