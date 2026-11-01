@@ -54,10 +54,10 @@
     </div>
 
     <!-- Main Container -->
-    <div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <div class="w-full max-w-4xl flex flex-col items-center gap-6">
         
         <!-- Calculator Main Body -->
-        <div class="lg:col-span-7 casio-body p-3 sm:p-5 rounded-3xl w-full max-w-md mx-auto">
+        <div class="casio-body p-3 sm:p-5 rounded-3xl w-full max-w-md mx-auto">
             
             <!-- Brand & Solar Panel -->
             <div class="flex justify-between items-center mb-2 px-1">
@@ -137,72 +137,53 @@
             </div>
         </div>
 
-        <!-- Sidebar Tools (History & Converter) -->
-        <div class="lg:col-span-5 flex flex-col gap-4">
-            <!-- History Card -->
-            <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-slate-700">
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-sm font-bold text-gray-200 flex items-center gap-2">
-                        <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> سجل الحسابات
-                    </h2>
-                    <button onclick="clearHistory()" class="text-xs text-red-400 hover:text-red-300">مسح</button>
-                </div>
-                <div id="history-list" class="h-40 overflow-y-auto flex flex-col gap-2 text-xs font-mono pr-1">
-                    <p class="text-gray-500 text-center py-4">لا يوجد حسابات محفوظة بعد</p>
-                </div>
-            </div>
-
-            <!-- Unit Converter Card -->
-            <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-slate-700">
-                <h2 class="text-sm font-bold text-gray-200 mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-right-left text-emerald-400"></i> محول الوحدات
-                </h2>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                    <input type="number" id="convert-input" placeholder="القيمة" class="bg-slate-900 text-white p-2 rounded border border-slate-700 focus:outline-none focus:border-emerald-500">
-                    <select id="convert-type" class="bg-slate-900 text-white p-2 rounded border border-slate-700">
-                        <option value="m-km">متر ← كيلومتر</option>
-                        <option value="km-m">كيلومتر ← متر</option>
-                        <option value="c-f">مئوي ← فهرنهايت</option>
-                        <option value="kg-g">كيلوجرام ← جرام</option>
-                    </select>
-                </div>
-                <button onclick="convertUnit()" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1.5 rounded transition text-xs">تحويل</button>
-                <div id="convert-result" class="mt-2 text-center text-xs font-bold text-amber-400"></div>
-            </div>
-        </div>
-
     </div>
 
     <script>
         let expressionEl = document.getElementById('expression');
         let resultEl = document.getElementById('result');
-        let historyList = document.getElementById('history-list');
         let lastAns = '0';
         let isDeg = true;
-        let history = [];
+        let isNewCalculation = false;
 
         function appendValue(val) {
-            if (resultEl.innerText === '0' && val !== '.') {
-                expressionEl.innerText = val;
-            } else {
-                expressionEl.innerText += val;
+            if (isNewCalculation) {
+                expressionEl.innerText = '';
+                resultEl.innerText = '0';
+                isNewCalculation = false;
             }
+            expressionEl.innerText += val;
         }
 
         function appendFunction(fn) {
+            if (isNewCalculation) {
+                expressionEl.innerText = '';
+                resultEl.innerText = '0';
+                isNewCalculation = false;
+            }
             expressionEl.innerText += fn + '(';
         }
 
         function appendAns() {
+            if (isNewCalculation) {
+                expressionEl.innerText = '';
+                resultEl.innerText = '0';
+                isNewCalculation = false;
+            }
             expressionEl.innerText += lastAns;
         }
 
         function clearScreen() {
             expressionEl.innerText = '';
             resultEl.innerText = '0';
+            isNewCalculation = false;
         }
 
         function deleteLast() {
+            if (isNewCalculation) {
+                clearScreen();
+                return;
+            }
             expressionEl.innerText = expressionEl.innerText.slice(0, -1);
         }
 
@@ -225,55 +206,11 @@
                 
                 resultEl.innerText = res;
                 lastAns = res;
-
-                // Add to history
-                history.unshift({ exp, res });
-                if (history.length > 20) history.pop();
-                updateHistoryUI();
+                isNewCalculation = true;
             } catch (e) {
                 resultEl.innerText = 'خطأ رياضي';
+                isNewCalculation = true;
             }
-        }
-
-        function updateHistoryUI() {
-            if (history.length === 0) {
-                historyList.innerHTML = '<p class="text-gray-500 text-center py-4">لا يوجد حسابات محفوظة بعد</p>';
-                return;
-            }
-            historyList.innerHTML = history.map(item => `
-                <div class="bg-slate-900/60 p-2 rounded border border-slate-700/50 flex justify-between items-center cursor-pointer hover:bg-slate-900" onclick="useHistory('${item.res}')">
-                    <span class="text-gray-400">${item.exp}</span>
-                    <span class="text-amber-400 font-bold">= ${item.res}</span>
-                </div>
-            `).join('');
-        }
-
-        function clearHistory() {
-            history = [];
-            updateHistoryUI();
-        }
-
-        function useHistory(val) {
-            expressionEl.innerText += val;
-        }
-
-        function convertUnit() {
-            let val = parseFloat(document.getElementById('convert-input').value);
-            let type = document.getElementById('convert-type').value;
-            let resEl = document.getElementById('convert-result');
-
-            if (isNaN(val)) {
-                resEl.innerText = 'يرجى أدخال رقم صحيح';
-                return;
-            }
-
-            let res = 0;
-            if (type === 'm-km') res = (val / 1000) + ' km';
-            else if (type === 'km-m') res = (val * 1000) + ' m';
-            else if (type === 'c-f') res = ((val * 9/5) + 32).toFixed(1) + ' °F';
-            else if (type === 'kg-g') res = (val * 1000) + ' g';
-
-            resEl.innerText = `النتيجة: ${res}`;
         }
     </script>
 </body>
