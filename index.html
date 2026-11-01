@@ -10,131 +10,153 @@
         @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Tajawal:wght@400;700&display=swap');
         
         body {
-            background-color: #0f172a;
+            background-color: #080b11;
             font-family: 'Tajawal', sans-serif;
             user-select: none;
         }
 
-        .casio-body {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.1);
-            border: 2px solid #334155;
+        .casio-case {
+            background: linear-gradient(145deg, #232833 0%, #11151c 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 2px 5px rgba(255, 255, 255, 0.15);
+            border: 3px solid #0b0e14;
+            border-top-left-radius: 2.5rem;
+            border-top-right-radius: 2.5rem;
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
         }
 
         .lcd-screen {
             background-color: #9ead86;
             font-family: 'Share Tech Mono', monospace;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.4);
-            color: #1a2e05;
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.6);
+            color: #121e03;
+            border: 2px solid #273021;
         }
 
         .btn-casio {
-            transition: all 0.08s ease;
-            box-shadow: 0 4px 0 #0f172a, 0 5px 10px rgba(0,0,0,0.3);
+            transition: all 0.04s ease;
+            box-shadow: 0 3px 0 #090b0e, 0 4px 6px rgba(0,0,0,0.4);
+            font-size: 11px;
         }
 
         .btn-casio:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 #0f172a, 0 2px 4px rgba(0,0,0,0.3);
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #090b0e, 0 2px 3px rgba(0,0,0,0.4);
         }
 
+        .btn-shift { background: linear-gradient(135deg, #d97706, #b45309); color: white; }
+        .btn-alpha { background: linear-gradient(135deg, #be185d, #9d174d); color: white; }
+        .btn-silver { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #0f172a; font-weight: bold; }
+        .btn-dark { background: linear-gradient(180deg, #334155, #1e293b); color: #f8fafc; border: 1px solid #475569; }
+        .btn-num { background: linear-gradient(180deg, #475569, #334155); color: #ffffff; font-weight: bold; }
+        .btn-ac-del { background: linear-gradient(180deg, #16a34a, #15803d); color: #ffffff; font-weight: bold; }
+        .btn-op { background: linear-gradient(180deg, #1e293b, #0f172a); color: #f59e0b; font-weight: bold; }
+
         .solar-panel {
-            background: linear-gradient(90deg, #451a03, #78350f, #451a03);
-            border: 1px solid #92400e;
+            background: linear-gradient(90deg, #2b1203, #451a03, #2b1203);
+            border: 1px solid #78350f;
         }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-2 sm:p-4">
 
-    <!-- Header App Bar -->
-    <div class="w-full max-w-4xl flex justify-between items-center mb-3 px-2">
-        <span class="text-sm font-bold text-gray-400 flex items-center gap-2">
-            <i class="fa-solid fa-calculator text-emerald-400"></i> الآلة الحاسبة الذكية
-        </span>
-    </div>
-
-    <!-- Main Container -->
-    <div class="w-full max-w-4xl flex flex-col items-center gap-6">
+    <!-- Calculator Casio Body -->
+    <div class="casio-case p-4 sm:p-5 w-full max-w-sm mx-auto flex flex-col gap-3">
         
-        <!-- Calculator Main Body -->
-        <div class="casio-body p-3 sm:p-5 rounded-3xl w-full max-w-md mx-auto">
-            
-            <!-- Brand & Solar Panel -->
-            <div class="flex justify-between items-center mb-2 px-1">
-                <div>
-                    <h1 class="text-lg font-bold tracking-widest text-gray-200 leading-none">CASIO</h1>
-                    <p class="text-[10px] text-gray-400 font-mono mt-0.5">fx-991ES PLUS <span class="text-[9px] text-gray-500">2nd edition</span></p>
+        <!-- Top Brand & Solar Section -->
+        <div class="flex justify-between items-start px-1">
+            <div>
+                <h1 class="text-base font-black tracking-widest text-gray-100 leading-none">CASIO</h1>
+                <p class="text-[11px] font-bold text-gray-300 font-mono mt-0.5 tracking-tight">fx-991ES <span class="text-amber-500 font-extrabold">PLUS</span></p>
+                <p class="text-[8px] text-gray-400 font-mono tracking-wider">NATURAL-V.P.A.M.</p>
+            </div>
+            <div class="flex flex-col items-end">
+                <span class="text-[9px] text-amber-400 font-bold tracking-wider mb-1">Design by OMAR MELIGY</span>
+                <div class="solar-panel w-20 h-5 rounded flex gap-0.5 p-0.5 opacity-90 shadow-inner">
+                    <div class="w-1/4 h-full border-r border-amber-950/50"></div>
+                    <div class="w-1/4 h-full border-r border-amber-950/50"></div>
+                    <div class="w-1/4 h-full border-r border-amber-950/50"></div>
+                    <div class="w-1/4 h-full"></div>
                 </div>
-                <div class="flex flex-col items-end">
-                    <span class="text-[10px] text-amber-500 font-bold tracking-wider mb-1">Design by OMAR MELIGY</span>
-                    <div class="solar-panel w-20 h-5 rounded flex gap-1 p-0.5 opacity-80">
-                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
-                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
-                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
-                        <div class="w-1/4 h-full"></div>
+            </div>
+        </div>
+
+        <!-- LCD Display Screen -->
+        <div class="lcd-screen rounded-md p-2.5 text-right relative overflow-hidden h-24 flex flex-col justify-between">
+            <div class="flex justify-between items-center text-[9px] text-stone-900 font-mono tracking-widest font-bold opacity-90">
+                <span id="deg-rad-indicator">D</span>
+                <span id="math-mode">Math</span>
+            </div>
+            <div id="expression" class="text-stone-950 text-sm h-6 overflow-x-auto whitespace-nowrap scrollbar-none font-mono dir-ltr text-left"></div>
+            <div id="result" class="text-stone-950 text-2xl font-bold font-mono overflow-x-auto whitespace-nowrap leading-none dir-ltr text-right">0</div>
+        </div>
+
+        <!-- Shift, Alpha, Mode, ON & D-Pad Row -->
+        <div class="grid grid-cols-3 items-center gap-1 px-0.5">
+            <div class="flex flex-col gap-1.5">
+                <button onclick="pressKey('SHIFT')" class="btn-casio btn-shift py-1 px-2 rounded-full text-[9px] font-bold">SHIFT</button>
+                <button onclick="pressKey('ALPHA')" class="btn-casio btn-alpha py-1 px-2 rounded-full text-[9px] font-bold">ALPHA</button>
+            </div>
+
+            <!-- Central D-Pad Navigation Button -->
+            <div class="flex justify-center items-center my-1">
+                <div class="w-16 h-16 rounded-full bg-slate-800 border-2 border-slate-600 shadow-xl flex flex-col justify-between items-center p-1 relative">
+                    <button onclick="navigate('up')" class="text-[8px] text-slate-300 hover:text-white absolute top-0.5">▲</button>
+                    <div class="flex justify-between w-full px-1 absolute top-5">
+                        <button onclick="navigate('left')" class="text-[8px] text-slate-300 hover:text-white">◀</button>
+                        <button onclick="navigate('right')" class="text-[8px] text-slate-300 hover:text-white">▶</button>
                     </div>
+                    <button onclick="navigate('down')" class="text-[8px] text-slate-300 hover:text-white absolute bottom-0.5">▼</button>
+                    <div class="w-5 h-5 rounded-full bg-slate-700 absolute top-5.5 self-center shadow-inner border border-slate-500"></div>
                 </div>
             </div>
 
-            <!-- LCD Display Screen -->
-            <div class="lcd-screen rounded-xl p-3 mb-4 text-right relative overflow-hidden h-28 flex flex-col justify-between border-2 border-slate-700">
-                <div class="flex justify-between items-center text-[10px] text-stone-800 font-mono tracking-widest border-b border-stone-700/20 pb-1">
-                    <span id="deg-rad-indicator">DEG</span>
-                    <span id="math-mode">MATH</span>
-                </div>
-                <div id="expression" class="text-stone-800 text-sm h-6 overflow-x-auto whitespace-nowrap scrollbar-none font-mono"></div>
-                <div id="result" class="text-stone-950 text-2xl sm:text-3xl font-bold font-mono overflow-x-auto whitespace-nowrap leading-none">0</div>
+            <div class="flex flex-col gap-1.5 items-end">
+                <button onclick="toggleAngleUnit()" class="btn-casio btn-silver py-1 px-2 rounded-full text-[9px]">MODE</button>
+                <button onclick="clearScreen()" class="btn-casio btn-silver py-1 px-2.5 rounded-full text-[9px]">ON</button>
             </div>
+        </div>
 
-            <!-- Function Keys Layer 1 -->
-            <div class="grid grid-cols-4 gap-2 mb-2">
-                <button onclick="pressKey('SHIFT')" class="btn-casio bg-amber-600 text-white text-xs font-bold py-1.5 rounded-lg border border-amber-500">SHIFT</button>
-                <button onclick="pressKey('ALPHA')" class="btn-casio bg-pink-700 text-white text-xs font-bold py-1.5 rounded-lg border border-pink-600">ALPHA</button>
-                <button onclick="toggleAngleUnit()" class="btn-casio bg-slate-700 text-gray-200 text-xs py-1.5 rounded-lg border border-slate-600">SETUP</button>
-                <button onclick="clearScreen()" class="btn-casio bg-slate-700 text-gray-200 text-xs py-1.5 rounded-lg border border-slate-600">ON</button>
-            </div>
+        <!-- Scientific Functions Grid (Matching Casio Layout) -->
+        <div class="grid grid-cols-5 gap-1 text-[10px] font-mono">
+            <button onclick="appendFunction('Math.sin')" class="btn-casio btn-dark py-1.5 rounded">sin</button>
+            <button onclick="appendFunction('Math.cos')" class="btn-casio btn-dark py-1.5 rounded">cos</button>
+            <button onclick="appendFunction('Math.tan')" class="btn-casio btn-dark py-1.5 rounded">tan</button>
+            <button onclick="appendValue('**2')" class="btn-casio btn-dark py-1.5 rounded">x²</button>
+            <button onclick="appendValue('**')" class="btn-casio btn-dark py-1.5 rounded">xⁿ</button>
 
-            <!-- Scientific Functions Layer 2 -->
-            <div class="grid grid-cols-5 gap-1.5 mb-3 text-xs font-mono">
-                <button onclick="appendFunction('Math.sin')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">sin</button>
-                <button onclick="appendFunction('Math.cos')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">cos</button>
-                <button onclick="appendFunction('Math.tan')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">tan</button>
-                <button onclick="appendValue('**2')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">x²</button>
-                <button onclick="appendValue('**')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">xⁿ</button>
+            <button onclick="appendFunction('Math.sqrt')" class="btn-casio btn-dark py-1.5 rounded">√</button>
+            <button onclick="appendFunction('Math.log10')" class="btn-casio btn-dark py-1.5 rounded">log</button>
+            <button onclick="appendFunction('Math.log')" class="btn-casio btn-dark py-1.5 rounded">ln</button>
+            <button onclick="appendValue('(')" class="btn-casio btn-dark py-1.5 rounded">(</button>
+            <button onclick="appendValue(')')" class="btn-casio btn-dark py-1.5 rounded">)</button>
+        </div>
 
-                <button onclick="appendFunction('Math.sqrt')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">√</button>
-                <button onclick="appendFunction('Math.log10')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">log</button>
-                <button onclick="appendFunction('Math.log')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">ln</button>
-                <button onclick="appendValue('(')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">(</button>
-                <button onclick="appendValue(')')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">)</button>
-            </div>
+        <!-- Main Keypad & Operations Grid -->
+        <div class="grid grid-cols-5 gap-1.5 mt-1">
+            <button onclick="appendValue('7')" class="btn-casio btn-num py-2.5 rounded text-base">7</button>
+            <button onclick="appendValue('8')" class="btn-casio btn-num py-2.5 rounded text-base">8</button>
+            <button onclick="appendValue('9')" class="btn-casio btn-num py-2.5 rounded text-base">9</button>
+            <button onclick="deleteLast()" class="btn-casio btn-ac-del py-2.5 rounded text-xs">DEL</button>
+            <button onclick="clearScreen()" class="btn-casio btn-ac-del py-2.5 rounded text-xs">AC</button>
 
-            <!-- Keypad (Numbers & Basic Ops) -->
-            <div class="grid grid-cols-5 gap-2">
-                <button onclick="appendValue('7')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">7</button>
-                <button onclick="appendValue('8')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">8</button>
-                <button onclick="appendValue('9')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">9</button>
-                <button onclick="deleteLast()" class="btn-casio bg-amber-700 text-white font-bold py-3 rounded-lg text-sm">DEL</button>
-                <button onclick="clearScreen()" class="btn-casio bg-red-700 text-white font-bold py-3 rounded-lg text-sm">AC</button>
+            <button onclick="appendValue('4')" class="btn-casio btn-num py-2.5 rounded text-base">4</button>
+            <button onclick="appendValue('5')" class="btn-casio btn-num py-2.5 rounded text-base">5</button>
+            <button onclick="appendValue('6')" class="btn-casio btn-num py-2.5 rounded text-base">6</button>
+            <button onclick="appendValue('*')" class="btn-casio btn-op py-2.5 rounded text-lg">×</button>
+            <button onclick="appendValue('/')" class="btn-casio btn-op py-2.5 rounded text-lg">÷</button>
 
-                <button onclick="appendValue('4')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">4</button>
-                <button onclick="appendValue('5')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">5</button>
-                <button onclick="appendValue('6')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">6</button>
-                <button onclick="appendValue('*')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">×</button>
-                <button onclick="appendValue('/')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">÷</button>
+            <button onclick="appendValue('1')" class="btn-casio btn-num py-2.5 rounded text-base">1</button>
+            <button onclick="appendValue('2')" class="btn-casio btn-num py-2.5 rounded text-base">2</button>
+            <button onclick="appendValue('3')" class="btn-casio btn-num py-2.5 rounded text-base">3</button>
+            <button onclick="appendValue('+')" class="btn-casio btn-op py-2.5 rounded text-lg">+</button>
+            <button onclick="appendValue('-')" class="btn-casio btn-op py-2.5 rounded text-lg">-</button>
 
-                <button onclick="appendValue('1')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">1</button>
-                <button onclick="appendValue('2')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">2</button>
-                <button onclick="appendValue('3')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">3</button>
-                <button onclick="appendValue('+')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">+</button>
-                <button onclick="appendValue('-')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">-</button>
-
-                <button onclick="appendValue('0')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">0</button>
-                <button onclick="appendValue('.')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">.</button>
-                <button onclick="appendValue('Math.PI')" class="btn-casio bg-slate-800 text-gray-300 py-3 rounded-lg text-sm">π</button>
-                <button onclick="appendAns()" class="btn-casio bg-slate-800 text-gray-300 py-3 rounded-lg text-sm">Ans</button>
-                <button onclick="calculate()" class="btn-casio bg-emerald-600 text-white font-bold py-3 rounded-lg text-xl">=</button>
-            </div>
+            <button onclick="appendValue('0')" class="btn-casio btn-num py-2.5 rounded text-base">0</button>
+            <button onclick="appendValue('.')" class="btn-casio btn-num py-2.5 rounded text-base">.</button>
+            <button onclick="appendValue('Math.PI')" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">π</button>
+            <button onclick="appendAns()" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">Ans</button>
+            <button onclick="calculate()" class="btn-casio btn-op bg-slate-700 text-white py-2.5 rounded text-xl font-black">=</button>
         </div>
 
     </div>
@@ -189,7 +211,7 @@
 
         function toggleAngleUnit() {
             isDeg = !isDeg;
-            document.getElementById('deg-rad-indicator').innerText = isDeg ? 'DEG' : 'RAD';
+            document.getElementById('deg-rad-indicator').innerText = isDeg ? 'D' : 'R';
         }
 
         function calculate() {
@@ -197,7 +219,7 @@
                 let exp = expressionEl.innerText;
                 if (!exp) return;
                 
-                let evalExp = exp.replace(/Math\.PI/g, Math.PI);
+                let evalExp = exp.replace(/×/g, '*').replace(/÷/g, '/');
                 let res = eval(evalExp);
                 
                 if (typeof res === 'number') {
@@ -208,10 +230,13 @@
                 lastAns = res;
                 isNewCalculation = true;
             } catch (e) {
-                resultEl.innerText = 'خطأ رياضي';
+                resultEl.innerText = 'Syntax ERROR';
                 isNewCalculation = true;
             }
         }
+
+        function pressKey(key) {}
+        function navigate(dir) {}
     </script>
 </body>
 </html>
