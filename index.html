@@ -68,4 +68,213 @@
                 <div class="flex flex-col items-end">
                     <span class="text-[10px] text-amber-500 font-bold tracking-wider mb-1">Design by OMAR MELIGY</span>
                     <div class="solar-panel w-20 h-5 rounded flex gap-1 p-0.5 opacity-80">
-                        <div class="w-1/4 h-full border-r border
+                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
+                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
+                        <div class="w-1/4 h-full border-r border-amber-900/40"></div>
+                        <div class="w-1/4 h-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LCD Display Screen -->
+            <div class="lcd-screen rounded-xl p-3 mb-4 text-right relative overflow-hidden h-28 flex flex-col justify-between border-2 border-slate-700">
+                <div class="flex justify-between items-center text-[10px] text-stone-800 font-mono tracking-widest border-b border-stone-700/20 pb-1">
+                    <span id="deg-rad-indicator">DEG</span>
+                    <span id="math-mode">MATH</span>
+                </div>
+                <div id="expression" class="text-stone-800 text-sm h-6 overflow-x-auto whitespace-nowrap scrollbar-none font-mono"></div>
+                <div id="result" class="text-stone-950 text-2xl sm:text-3xl font-bold font-mono overflow-x-auto whitespace-nowrap leading-none">0</div>
+            </div>
+
+            <!-- Function Keys Layer 1 -->
+            <div class="grid grid-cols-4 gap-2 mb-2">
+                <button onclick="pressKey('SHIFT')" class="btn-casio bg-amber-600 text-white text-xs font-bold py-1.5 rounded-lg border border-amber-500">SHIFT</button>
+                <button onclick="pressKey('ALPHA')" class="btn-casio bg-pink-700 text-white text-xs font-bold py-1.5 rounded-lg border border-pink-600">ALPHA</button>
+                <button onclick="toggleAngleUnit()" class="btn-casio bg-slate-700 text-gray-200 text-xs py-1.5 rounded-lg border border-slate-600">SETUP</button>
+                <button onclick="clearScreen()" class="btn-casio bg-slate-700 text-gray-200 text-xs py-1.5 rounded-lg border border-slate-600">ON</button>
+            </div>
+
+            <!-- Scientific Functions Layer 2 -->
+            <div class="grid grid-cols-5 gap-1.5 mb-3 text-xs font-mono">
+                <button onclick="appendFunction('Math.sin')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">sin</button>
+                <button onclick="appendFunction('Math.cos')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">cos</button>
+                <button onclick="appendFunction('Math.tan')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">tan</button>
+                <button onclick="appendValue('**2')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">x²</button>
+                <button onclick="appendValue('**')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">xⁿ</button>
+
+                <button onclick="appendFunction('Math.sqrt')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">√</button>
+                <button onclick="appendFunction('Math.log10')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">log</button>
+                <button onclick="appendFunction('Math.log')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">ln</button>
+                <button onclick="appendValue('(')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">(</button>
+                <button onclick="appendValue(')')" class="btn-casio bg-slate-800 text-gray-200 py-2 rounded">)</button>
+            </div>
+
+            <!-- Keypad (Numbers & Basic Ops) -->
+            <div class="grid grid-cols-5 gap-2">
+                <button onclick="appendValue('7')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">7</button>
+                <button onclick="appendValue('8')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">8</button>
+                <button onclick="appendValue('9')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">9</button>
+                <button onclick="deleteLast()" class="btn-casio bg-amber-700 text-white font-bold py-3 rounded-lg text-sm">DEL</button>
+                <button onclick="clearScreen()" class="btn-casio bg-red-700 text-white font-bold py-3 rounded-lg text-sm">AC</button>
+
+                <button onclick="appendValue('4')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">4</button>
+                <button onclick="appendValue('5')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">5</button>
+                <button onclick="appendValue('6')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">6</button>
+                <button onclick="appendValue('*')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">×</button>
+                <button onclick="appendValue('/')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">÷</button>
+
+                <button onclick="appendValue('1')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">1</button>
+                <button onclick="appendValue('2')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">2</button>
+                <button onclick="appendValue('3')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">3</button>
+                <button onclick="appendValue('+')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">+</button>
+                <button onclick="appendValue('-')" class="btn-casio bg-slate-800 text-amber-400 font-bold py-3 rounded-lg text-lg">-</button>
+
+                <button onclick="appendValue('0')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">0</button>
+                <button onclick="appendValue('.')" class="btn-casio bg-slate-700 text-white font-bold py-3 rounded-lg text-lg">.</button>
+                <button onclick="appendValue('Math.PI')" class="btn-casio bg-slate-800 text-gray-300 py-3 rounded-lg text-sm">π</button>
+                <button onclick="appendAns()" class="btn-casio bg-slate-800 text-gray-300 py-3 rounded-lg text-sm">Ans</button>
+                <button onclick="calculate()" class="btn-casio bg-emerald-600 text-white font-bold py-3 rounded-lg text-xl">=</button>
+            </div>
+        </div>
+
+        <!-- Sidebar Tools (History & Converter) -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+            <!-- History Card -->
+            <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-slate-700">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-sm font-bold text-gray-200 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> سجل الحسابات
+                    </h2>
+                    <button onclick="clearHistory()" class="text-xs text-red-400 hover:text-red-300">مسح</button>
+                </div>
+                <div id="history-list" class="h-40 overflow-y-auto flex flex-col gap-2 text-xs font-mono pr-1">
+                    <p class="text-gray-500 text-center py-4">لا يوجد حسابات محفوظة بعد</p>
+                </div>
+            </div>
+
+            <!-- Unit Converter Card -->
+            <div class="bg-slate-800/80 backdrop-blur rounded-2xl p-4 border border-slate-700">
+                <h2 class="text-sm font-bold text-gray-200 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-right-left text-emerald-400"></i> محول الوحدات
+                </h2>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <input type="number" id="convert-input" placeholder="القيمة" class="bg-slate-900 text-white p-2 rounded border border-slate-700 focus:outline-none focus:border-emerald-500">
+                    <select id="convert-type" class="bg-slate-900 text-white p-2 rounded border border-slate-700">
+                        <option value="m-km">متر ← كيلومتر</option>
+                        <option value="km-m">كيلومتر ← متر</option>
+                        <option value="c-f">مئوي ← فهرنهايت</option>
+                        <option value="kg-g">كيلوجرام ← جرام</option>
+                    </select>
+                </div>
+                <button onclick="convertUnit()" class="w-full mt-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1.5 rounded transition text-xs">تحويل</button>
+                <div id="convert-result" class="mt-2 text-center text-xs font-bold text-amber-400"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let expressionEl = document.getElementById('expression');
+        let resultEl = document.getElementById('result');
+        let historyList = document.getElementById('history-list');
+        let lastAns = '0';
+        let isDeg = true;
+        let history = [];
+
+        function appendValue(val) {
+            if (resultEl.innerText === '0' && val !== '.') {
+                expressionEl.innerText = val;
+            } else {
+                expressionEl.innerText += val;
+            }
+        }
+
+        function appendFunction(fn) {
+            expressionEl.innerText += fn + '(';
+        }
+
+        function appendAns() {
+            expressionEl.innerText += lastAns;
+        }
+
+        function clearScreen() {
+            expressionEl.innerText = '';
+            resultEl.innerText = '0';
+        }
+
+        function deleteLast() {
+            expressionEl.innerText = expressionEl.innerText.slice(0, -1);
+        }
+
+        function toggleAngleUnit() {
+            isDeg = !isDeg;
+            document.getElementById('deg-rad-indicator').innerText = isDeg ? 'DEG' : 'RAD';
+        }
+
+        function calculate() {
+            try {
+                let exp = expressionEl.innerText;
+                if (!exp) return;
+                
+                let evalExp = exp.replace(/Math\.PI/g, Math.PI);
+                let res = eval(evalExp);
+                
+                if (typeof res === 'number') {
+                    res = Number(res.toFixed(8));
+                }
+                
+                resultEl.innerText = res;
+                lastAns = res;
+
+                // Add to history
+                history.unshift({ exp, res });
+                if (history.length > 20) history.pop();
+                updateHistoryUI();
+            } catch (e) {
+                resultEl.innerText = 'خطأ رياضي';
+            }
+        }
+
+        function updateHistoryUI() {
+            if (history.length === 0) {
+                historyList.innerHTML = '<p class="text-gray-500 text-center py-4">لا يوجد حسابات محفوظة بعد</p>';
+                return;
+            }
+            historyList.innerHTML = history.map(item => `
+                <div class="bg-slate-900/60 p-2 rounded border border-slate-700/50 flex justify-between items-center cursor-pointer hover:bg-slate-900" onclick="useHistory('${item.res}')">
+                    <span class="text-gray-400">${item.exp}</span>
+                    <span class="text-amber-400 font-bold">= ${item.res}</span>
+                </div>
+            `).join('');
+        }
+
+        function clearHistory() {
+            history = [];
+            updateHistoryUI();
+        }
+
+        function useHistory(val) {
+            expressionEl.innerText += val;
+        }
+
+        function convertUnit() {
+            let val = parseFloat(document.getElementById('convert-input').value);
+            let type = document.getElementById('convert-type').value;
+            let resEl = document.getElementById('convert-result');
+
+            if (isNaN(val)) {
+                resEl.innerText = 'يرجى أدخال رقم صحيح';
+                return;
+            }
+
+            let res = 0;
+            if (type === 'm-km') res = (val / 1000) + ' km';
+            else if (type === 'km-m') res = (val * 1000) + ' m';
+            else if (type === 'c-f') res = ((val * 9/5) + 32).toFixed(1) + ' °F';
+            else if (type === 'kg-g') res = (val * 1000) + ' g';
+
+            resEl.innerText = `النتيجة: ${res}`;
+        }
+    </script>
+</body>
+</html>
