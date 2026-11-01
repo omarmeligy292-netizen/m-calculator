@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,9 +46,10 @@
         .btn-silver { background: linear-gradient(135deg, #cbd5e1, #94a3b8); color: #0f172a; font-weight: bold; }
         .btn-dark { background: linear-gradient(180deg, #334155, #1e293b); color: #f8fafc; border: 1px solid #475569; }
         .btn-num { background: linear-gradient(180deg, #475569, #334155); color: #ffffff; font-weight: bold; }
-        .btn-ac { background: linear-gradient(180deg, #16a34a, #15803d); color: #ffffff; font-weight: bold; }
-        .btn-del { background: linear-gradient(180deg, #16a34a, #15803d); color: #ffffff; font-weight: bold; }
+        .btn-ac { background: linear-gradient(180deg, #dc2626, #b91c1c); color: #ffffff; font-weight: bold; }
+        .btn-del { background: linear-gradient(180deg, #d97706, #b45309); color: #ffffff; font-weight: bold; }
         .btn-op { background: linear-gradient(180deg, #1e293b, #0f172a); color: #f59e0b; font-weight: bold; }
+        .btn-equals { background: linear-gradient(180deg, #16a34a, #15803d); color: #ffffff; font-weight: bold; }
 
         .solar-panel {
             background: linear-gradient(90deg, #2b1203, #451a03, #2b1203);
@@ -80,13 +81,13 @@
         </div>
 
         <!-- LCD Display Screen -->
-        <div class="lcd-screen rounded-md p-2.5 text-right relative overflow-hidden h-24 flex flex-col justify-between">
+        <div class="lcd-screen rounded-md p-2.5 text-left relative overflow-hidden h-24 flex flex-col justify-between">
             <div class="flex justify-between items-center text-[9px] text-stone-900 font-mono tracking-widest font-bold opacity-90">
-                <span id="deg-rad-indicator">D</span>
                 <span id="math-mode">Math</span>
+                <span id="deg-rad-indicator">D</span>
             </div>
-            <div id="expression" class="text-stone-950 text-sm h-6 overflow-x-auto whitespace-nowrap scrollbar-none font-mono dir-ltr text-left"></div>
-            <div id="result" class="text-stone-950 text-2xl font-bold font-mono overflow-x-auto whitespace-nowrap leading-none dir-ltr text-right">0</div>
+            <div id="expression" class="text-stone-950 text-sm h-6 overflow-x-auto whitespace-nowrap scrollbar-none font-mono"></div>
+            <div id="result" class="text-stone-950 text-2xl font-bold font-mono overflow-x-auto whitespace-nowrap leading-none text-right">0</div>
         </div>
 
         <!-- Shift, Alpha, Mode, ON & D-Pad Row -->
@@ -130,31 +131,31 @@
             <button onclick="appendValue(')')" class="btn-casio btn-dark py-1.5 rounded">)</button>
         </div>
 
-        <!-- Main Keypad & Operations Grid (Exact Casio Layout: Numbers Right, DEL/AC & Ops Left) -->
+        <!-- Main Keypad & Operations Grid (Accurate Casio Layout) -->
         <div class="grid grid-cols-5 gap-1.5 mt-1">
-            <button onclick="clearScreen()" class="btn-casio btn-ac py-2.5 rounded text-xs">AC</button>
-            <button onclick="deleteLast()" class="btn-casio btn-del py-2.5 rounded text-xs">DEL</button>
-            <button onclick="appendValue('9')" class="btn-casio btn-num py-2.5 rounded text-base">9</button>
-            <button onclick="appendValue('8')" class="btn-casio btn-num py-2.5 rounded text-base">8</button>
             <button onclick="appendValue('7')" class="btn-casio btn-num py-2.5 rounded text-base">7</button>
+            <button onclick="appendValue('8')" class="btn-casio btn-num py-2.5 rounded text-base">8</button>
+            <button onclick="appendValue('9')" class="btn-casio btn-num py-2.5 rounded text-base">9</button>
+            <button onclick="deleteLast()" class="btn-casio btn-del py-2.5 rounded text-xs">DEL</button>
+            <button onclick="clearScreen()" class="btn-casio btn-ac py-2.5 rounded text-xs">AC</button>
 
-            <button onclick="appendValue('/')" class="btn-casio btn-op py-2.5 rounded text-lg">÷</button>
-            <button onclick="appendValue('*')" class="btn-casio btn-op py-2.5 rounded text-lg">×</button>
-            <button onclick="appendValue('6')" class="btn-casio btn-num py-2.5 rounded text-base">6</button>
-            <button onclick="appendValue('5')" class="btn-casio btn-num py-2.5 rounded text-base">5</button>
             <button onclick="appendValue('4')" class="btn-casio btn-num py-2.5 rounded text-base">4</button>
+            <button onclick="appendValue('5')" class="btn-casio btn-num py-2.5 rounded text-base">5</button>
+            <button onclick="appendValue('6')" class="btn-casio btn-num py-2.5 rounded text-base">6</button>
+            <button onclick="appendValue('*')" class="btn-casio btn-op py-2.5 rounded text-lg">×</button>
+            <button onclick="appendValue('/')" class="btn-casio btn-op py-2.5 rounded text-lg">÷</button>
 
-            <button onclick="appendValue('-')" class="btn-casio btn-op py-2.5 rounded text-lg">-</button>
-            <button onclick="appendValue('+')" class="btn-casio btn-op py-2.5 rounded text-lg">+</button>
-            <button onclick="appendValue('3')" class="btn-casio btn-num py-2.5 rounded text-base">3</button>
-            <button onclick="appendValue('2')" class="btn-casio btn-num py-2.5 rounded text-base">2</button>
             <button onclick="appendValue('1')" class="btn-casio btn-num py-2.5 rounded text-base">1</button>
+            <button onclick="appendValue('2')" class="btn-casio btn-num py-2.5 rounded text-base">2</button>
+            <button onclick="appendValue('3')" class="btn-casio btn-num py-2.5 rounded text-base">3</button>
+            <button onclick="appendValue('+')" class="btn-casio btn-op py-2.5 rounded text-lg">+</button>
+            <button onclick="appendValue('-')" class="btn-casio btn-op py-2.5 rounded text-lg">-</button>
 
-            <button onclick="calculate()" class="btn-casio btn-op bg-emerald-600 text-white py-2.5 rounded text-xl font-black">=</button>
-            <button onclick="appendAns()" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">Ans</button>
-            <button onclick="appendValue('Math.PI')" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">π</button>
-            <button onclick="appendValue('.')" class="btn-casio btn-num py-2.5 rounded text-base">.</button>
             <button onclick="appendValue('0')" class="btn-casio btn-num py-2.5 rounded text-base">0</button>
+            <button onclick="appendValue('.')" class="btn-casio btn-num py-2.5 rounded text-base">.</button>
+            <button onclick="appendValue('Math.PI')" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">π</button>
+            <button onclick="appendAns()" class="btn-casio btn-dark py-2.5 rounded text-xs font-bold">Ans</button>
+            <button onclick="calculate()" class="btn-casio btn-equals py-2.5 rounded text-xl font-black">=</button>
         </div>
 
     </div>
